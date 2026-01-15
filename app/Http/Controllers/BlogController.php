@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $query = BlogPost::query()
+        $query = BlogPost::with('doctor')
             ->whereNotNull('published_at')
             ->where('published_at', '<=', now());
 
@@ -111,7 +111,7 @@ class BlogController extends Controller
             abort(404);
         }
 
-        //$post->load('doctor');
+        $post->load('doctor');
 
         return view('blog.show', compact('post'));
     }
@@ -122,10 +122,10 @@ class BlogController extends Controller
      */
     public function author(Doctor $doctor)
     {
-//        $posts = $doctor->blogPosts()
-//            ->orderBy('published_at', 'desc')
-//            ->paginate(12);
-//
-//        return view('blog.author', compact('doctor', 'posts'));
+        $posts = $doctor->blogPosts()
+            ->orderBy('published_at', 'desc')
+            ->paginate(12);
+
+        return view('blog.author', compact('doctor', 'posts'));
     }
 }

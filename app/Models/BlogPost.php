@@ -41,6 +41,13 @@ class BlogPost extends Model
         return 'slug';
     }
 
+    /**
+     * Get the doctor that authored this blog post.
+     */
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
 
     /**
      * Get a valid image URL or null if invalid.

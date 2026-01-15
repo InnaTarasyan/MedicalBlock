@@ -3,7 +3,6 @@
 @section('title', $post->title . ' - Medical Blog')
 
 @section('breadcrumbs')
-	<span class="mx-1">/</span>
 	<a href="{{ route('blog.index') }}" class="hover:underline">Blog</a>
 	<span class="mx-1">/</span>
 	<span class="line-clamp-1">{{ $post->title }}</span>
