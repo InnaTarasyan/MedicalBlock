@@ -11,73 +11,64 @@
 @section('content')
 <div class="grid gap-6 sm:gap-8">
 	<!-- Article Header -->
-	<article class="bg-white rounded-2xl sm:rounded-[32px] border border-gray-100 shadow-sm overflow-hidden">
+	<article class="bg-white overflow-hidden">
 		@if($post->valid_image_url)
-			<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gradient-to-br from-emerald-100 to-emerald-200">
+			<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-100">
 				<img 
 					src="{{ $post->valid_image_url }}" 
 					alt="{{ $post->title }}"
 					class="w-full h-full object-cover"
 					loading="eager"
 				>
-				<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-				<div class="absolute top-4 right-4">
-					<span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-emerald-700 shadow-lg">
-						{{ $post->topic }}
-					</span>
-				</div>
 			</div>
 		@else
-			<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gradient-to-br from-emerald-100 via-emerald-50 to-teal-100">
+			<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-100">
 				<div class="absolute inset-0 flex items-center justify-center">
-					<svg class="w-32 h-32 text-emerald-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<svg class="w-32 h-32 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 					</svg>
-				</div>
-				<div class="absolute top-4 right-4">
-					<span class="inline-flex items-center gap-1.5 rounded-full bg-white/95 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-emerald-700 shadow-lg">
-						{{ $post->topic }}
-					</span>
 				</div>
 			</div>
 		@endif
 		
-		<div class="p-6 sm:p-8 lg:p-10">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
 			<!-- Article Meta -->
-			<div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-6">
-				<div class="flex items-center gap-2">
-					<div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
-						<span class="text-emerald-700 text-sm font-semibold">{{ substr($post->author, 0, 2) }}</span>
-					</div>
-					@if($post->doctor)
-						<a href="{{ route('blog.author', $post->doctor) }}" class="font-medium text-gray-700 hover:text-emerald-700 transition-colors">
-							{{ $post->author }}
-						</a>
-					@else
-						<span class="font-medium text-gray-700">{{ $post->author }}</span>
-					@endif
-				</div>
-				<span>•</span>
-				<time datetime="{{ $post->published_at->format('Y-m-d') }}" class="font-medium">
+			<div class="flex flex-wrap items-center gap-3 text-sm text-gray-600 mb-4">
+				@if($post->topic)
+					<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-teal-700 bg-teal-50">
+						{{ $post->topic }}
+					</span>
+				@endif
+				<span class="text-gray-400">•</span>
+				<time datetime="{{ $post->published_at->format('Y-m-d') }}" class="text-gray-600">
 					{{ $post->published_at->format('F d, Y') }}
 				</time>
-				<span>•</span>
-				<span>{{ $post->read_time }} min read</span>
+				<span class="text-gray-400">•</span>
+				<span class="text-gray-600">{{ $post->read_time }} min read</span>
+				@if($post->doctor)
+					<span class="text-gray-400">•</span>
+					<a href="{{ route('blog.author', $post->doctor) }}" class="text-gray-600 hover:text-teal-700 transition-colors font-medium">
+						{{ $post->author }}
+					</a>
+				@else
+					<span class="text-gray-400">•</span>
+					<span class="text-gray-600 font-medium">{{ $post->author }}</span>
+				@endif
 			</div>
 			
 			<!-- Article Title -->
-			<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+			<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight" style="font-weight: 700; line-height: 1.2;">
 				{{ $post->title }}
 			</h1>
 			
 			@if($post->excerpt)
-				<p class="text-xl text-gray-600 mb-8 leading-relaxed">
+				<p class="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed" style="line-height: 1.6;">
 					{{ $post->excerpt }}
 				</p>
 			@endif
 			
 			<!-- Article Content -->
-			<div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-emerald-700 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700 prose-img:rounded-xl prose-img:shadow-lg">
+			<div class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-p:text-base prose-a:text-teal-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700 prose-img:rounded-lg prose-img:shadow-md prose-img:my-8" style="font-size: 18px; line-height: 1.75;">
 				{!! $post->content !!}
 			</div>
 			
@@ -88,7 +79,7 @@
 			@if($sourceUrl)
 				<!-- Read More Button -->
 				<div class="mt-8 pt-6 border-t border-gray-200">
-					<a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-base font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-md hover:shadow-lg">
+					<a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-base font-semibold text-white bg-teal-600 hover:bg-teal-700 transition-colors shadow-sm hover:shadow-md">
 						<span>Read More</span>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -102,12 +93,12 @@
 			<div class="mt-10 pt-8 border-t border-gray-200">
 				<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 					<div class="flex items-center gap-3">
-						<div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
-							<span class="text-emerald-700 font-semibold">{{ substr($post->author, 0, 2) }}</span>
+						<div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center">
+							<span class="text-teal-700 font-semibold">{{ substr($post->author, 0, 2) }}</span>
 						</div>
 						<div>
 							@if($post->doctor)
-								<a href="{{ route('blog.author', $post->doctor) }}" class="font-semibold text-gray-900 hover:text-emerald-700 transition-colors block">
+								<a href="{{ route('blog.author', $post->doctor) }}" class="font-semibold text-gray-900 hover:text-teal-700 transition-colors block">
 									{{ $post->author }}
 								</a>
 							@else
@@ -116,7 +107,7 @@
 							<p class="text-sm text-gray-500">Medical Professional</p>
 						</div>
 					</div>
-					<a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition-colors">
+					<a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-teal-700 bg-teal-50 hover:bg-teal-100 transition-colors">
 						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
 						</svg>
@@ -139,18 +130,18 @@
 	@endphp
 	
 	@if($relatedPosts->count() > 0)
-		<section class="mt-6 sm:mt-8">
+		<section class="mt-6 sm:mt-8 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between mb-6">
 				<h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Related Articles</h2>
-				<a href="{{ route('blog.index') }}" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+				<a href="{{ route('blog.index') }}" class="text-sm font-semibold text-teal-700 hover:text-teal-800">
 					View all
 				</a>
 			</div>
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 				@foreach($relatedPosts as $relatedPost)
-					<article class="group bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+					<article class="group bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
 						@if($relatedPost->valid_image_url)
-							<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gradient-to-br from-emerald-100 to-emerald-200">
+							<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gray-100">
 								<img 
 									src="{{ $relatedPost->valid_image_url }}" 
 									alt="{{ $relatedPost->title }}"
@@ -159,9 +150,9 @@
 								>
 							</a>
 						@else
-							<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gradient-to-br from-emerald-100 via-emerald-50 to-teal-100">
+							<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gray-100">
 								<div class="absolute inset-0 flex items-center justify-center">
-									<svg class="w-16 h-16 text-emerald-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 									</svg>
 								</div>
@@ -177,7 +168,7 @@
 								<span>{{ $relatedPost->read_time }} min read</span>
 							</div>
 							
-							<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors line-clamp-2">
+							<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-700 transition-colors line-clamp-2">
 								<a href="{{ route('blog.show', $relatedPost) }}">{{ $relatedPost->title }}</a>
 							</h3>
 							
@@ -187,7 +178,7 @@
 								</p>
 							@endif
 							
-							<a href="{{ route('blog.show', $relatedPost) }}" class="inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-800 group-hover:gap-2 transition-all">
+							<a href="{{ route('blog.show', $relatedPost) }}" class="inline-flex items-center gap-1 text-sm font-semibold text-teal-700 hover:text-teal-800 group-hover:gap-2 transition-all">
 								Read more
 								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

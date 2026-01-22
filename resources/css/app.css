@@ -9,17 +9,17 @@
 @theme {
 	--font-sans: 'Roboto', 'Open Sans', 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
-	/* Brand palette - based on #065F1F (RGB: 6, 95, 31) - rich, dark emerald green */
-	--color-brand-50: 236 253 245;   /* very light green */
-	--color-brand-100: 209 250 229;  /* light green */
-	--color-brand-200: 167 243 208;  /* lighter green */
-	--color-brand-300: 110 231 183;  /* light-medium green */
-	--color-brand-400: 16 185 129;   /* emerald-500 - vibrant accent */
-	--color-brand-500: 6 95 31;       /* #065F1F - main brand color (darker, richer green) */
-	--color-brand-600: 5 78 25;      /* darker green */
-	--color-brand-700: 4 60 19;      /* much darker green */
-	--color-brand-800: 3 42 13;      /* very dark green */
-	--color-brand-900: 2 24 8;       /* darkest green */
+	/* Healthline-inspired color palette - clean, professional medical theme */
+	--color-brand-50: 240 253 250;   /* very light teal */
+	--color-brand-100: 204 251 241;   /* light teal */
+	--color-brand-200: 153 246 228;   /* lighter teal */
+	--color-brand-300: 94 234 212;   /* light-medium teal */
+	--color-brand-400: 45 212 191;   /* medium teal - Healthline accent */
+	--color-brand-500: 20 184 166;    /* teal-500 - main brand color (Healthline blue-teal) */
+	--color-brand-600: 13 148 136;    /* darker teal */
+	--color-brand-700: 15 118 110;     /* much darker teal */
+	--color-brand-800: 17 94 89;       /* very dark teal */
+	--color-brand-900: 19 78 74;       /* darkest teal */
 	--radius-lg: 0.75rem;
 	--shadow-soft: 0 1px 2px 0 rgb(0 0 0 / 0.05), 0 1px 3px 0 rgb(0 0 0 / 0.06);
 }
@@ -30,12 +30,9 @@
 		@apply h-full;
 	}
 	body {
-		@apply bg-gray-50 text-gray-900 antialiased;
+		@apply bg-white text-gray-900 antialiased;
 		font-feature-settings: "cv11", "ss01";
-		background-image: 
-			radial-gradient(circle at 20% 30%, rgba(6, 95, 31, 0.05) 0%, transparent 50%),
-			radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
-			radial-gradient(circle at 50% 50%, rgba(110, 231, 183, 0.02) 0%, transparent 100%);
+		background-color: #FFFFFF;
 		position: relative;
 	}
 	body::before {
@@ -45,9 +42,8 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-image: 
-			url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23065F1F' fill-opacity='0.03'%3E%3Cpath d='M30 4v8h-8v8h8v8h8v-8h8v-8h-8V4h-8zm0 32v8h-8v8h8v8h8v-8h8v-8h-8v-8h-8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-		opacity: 0.3;
+		background-color: #F8F9FA;
+		opacity: 0.5;
 		pointer-events: none;
 		z-index: 0;
 	}

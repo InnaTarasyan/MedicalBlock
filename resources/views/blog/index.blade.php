@@ -5,26 +5,21 @@
 @section('content')
 <div class="grid gap-4 sm:gap-6 md:gap-8">
 	<!-- Hero Section -->
-	<section class="relative w-full rounded-xl sm:rounded-2xl overflow-hidden mx-0 sm:mx-0 px-0 sm:px-0 bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-950">
-		<div class="absolute inset-0 bg-gradient-to-br from-emerald-900/70 via-emerald-900/40 to-emerald-950/70 mix-blend-multiply z-0"></div>
-		<div class="absolute inset-0 hidden sm:block pointer-events-none">
-			<div class="absolute w-64 h-64 bg-emerald-400/35 blur-3xl rounded-full" style="top: -120px; left: -60px;"></div>
-			<div class="absolute w-72 h-72 bg-teal-300/30 blur-3xl rounded-full" style="bottom: -180px; right: -40px;"></div>
-		</div>
-		<div class="relative z-10 px-4 py-6 sm:py-8 md:py-10 lg:py-12 sm:px-8 md:px-10 text-center">
-			<h1 class="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 drop-shadow-lg">Medical Blog</h1>
-			<p class="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto drop-shadow-md px-2 sm:px-0">Expert health insights, medical articles, and wellness tips from healthcare professionals</p>
+	<section class="relative w-full overflow-hidden mx-0 sm:mx-0 px-0 sm:px-0 bg-white border-b border-gray-200">
+		<div class="relative z-10 px-4 py-8 sm:py-12 md:py-16 lg:py-20 sm:px-8 md:px-10 text-center">
+			<h1 class="text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6" style="font-weight: 700; line-height: 1.2;">Medical Blog</h1>
+			<p class="text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2 sm:px-0" style="line-height: 1.6;">Expert health insights, medical articles, and wellness tips from healthcare professionals</p>
 		</div>
 	</section>
 
 	<!-- Topic Filter Section -->
 	<section class="mt-4 sm:mt-6 md:mt-8">
-		<div class="bg-white rounded-xl sm:rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-5 md:p-6">
+		<div class="bg-white border-b border-gray-200 p-4 sm:p-5 md:p-6">
 			<div class="flex items-center justify-between mb-3 sm:mb-4 md:mb-6">
-				<h2 class="text-base sm:text-lg md:text-xl font-semibold text-gray-900">Explore by Topic</h2>
+				<h2 class="text-base sm:text-lg md:text-xl font-bold text-gray-900">Explore by Topic</h2>
 				<div class="flex items-center gap-2 sm:gap-3">
 					@if(request('topic'))
-						<a href="{{ route('blog.index') }}" class="text-xs sm:text-sm font-medium text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors">
+						<a href="{{ route('blog.index') }}" class="text-xs sm:text-sm font-medium text-teal-700 hover:text-teal-800 flex items-center gap-1 transition-colors">
 							<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
 							</svg>
@@ -33,7 +28,7 @@
 						</a>
 					@endif
 					@if(!request('topic'))
-						<a href="{{ route('blog.topics') }}" class="text-xs sm:text-sm font-medium text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors">
+						<a href="{{ route('blog.topics') }}" class="text-xs sm:text-sm font-medium text-teal-700 hover:text-teal-800 flex items-center gap-1 transition-colors">
 							<span>View All</span>
 							<svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -49,10 +44,34 @@
 			<ul class="grid grid-cols-2 sm:hidden gap-2.5 sm:gap-3">
 				@php
 					$getTopicImage = function($topicName) {
+						// First check local images
 						$topicSlug = strtolower(str_replace([' ', "'"], ['-', ''], $topicName));
 						$imagePath = "/img/topics/{$topicSlug}.png";
 						$fullPath = public_path($imagePath);
-						return file_exists($fullPath) ? asset($imagePath) : null;
+						if (file_exists($fullPath)) {
+							return asset($imagePath);
+						}
+						
+						// Use Unsplash images for topics (Healthline-style)
+						$topicImages = [
+							'cardiology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+							'neurology' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+							'dermatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'pediatrics' => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop',
+							'oncology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'orthopedics' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
+							'gynecology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+							'psychiatry' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop',
+							'endocrinology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'gastroenterology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'ophthalmology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+							'urology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'pulmonology' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
+							'rheumatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+						];
+						
+						$key = strtolower($topicName);
+						return $topicImages[$key] ?? 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop';
 					};
 				@endphp
 				
@@ -143,10 +162,34 @@
 			<ul class="hidden sm:grid md:hidden grid-cols-3 gap-3">
 				@php
 					$getTopicImage = function($topicName) {
+						// First check local images
 						$topicSlug = strtolower(str_replace([' ', "'"], ['-', ''], $topicName));
 						$imagePath = "/img/topics/{$topicSlug}.png";
 						$fullPath = public_path($imagePath);
-						return file_exists($fullPath) ? asset($imagePath) : null;
+						if (file_exists($fullPath)) {
+							return asset($imagePath);
+						}
+						
+						// Use Unsplash images for topics (Healthline-style)
+						$topicImages = [
+							'cardiology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+							'neurology' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+							'dermatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'pediatrics' => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop',
+							'oncology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'orthopedics' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
+							'gynecology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+							'psychiatry' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop',
+							'endocrinology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'gastroenterology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'ophthalmology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+							'urology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+							'pulmonology' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
+							'rheumatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+						];
+						
+						$key = strtolower($topicName);
+						return $topicImages[$key] ?? 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop';
 					};
 				@endphp
 				
@@ -234,10 +277,34 @@
 				<ul class="flex gap-3 md:gap-4 lg:gap-5">
 						@php
 							$getTopicImage = function($topicName) {
+								// First check local images
 								$topicSlug = strtolower(str_replace([' ', "'"], ['-', ''], $topicName));
 								$imagePath = "/img/topics/{$topicSlug}.png";
 								$fullPath = public_path($imagePath);
-								return file_exists($fullPath) ? asset($imagePath) : null;
+								if (file_exists($fullPath)) {
+									return asset($imagePath);
+								}
+								
+								// Use Unsplash images for topics (Healthline-style)
+								$topicImages = [
+									'cardiology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+									'neurology' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+									'dermatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'pediatrics' => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop',
+									'oncology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'orthopedics' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
+									'gynecology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+									'psychiatry' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop',
+									'endocrinology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'gastroenterology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'ophthalmology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+									'urology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'pulmonology' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
+									'rheumatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+								];
+								
+								$key = strtolower($topicName);
+								return $topicImages[$key] ?? 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop';
 							};
 						@endphp
 						
@@ -269,16 +336,16 @@
 							<li class="flex-shrink-0">
 								<a href="{{ route('blog.index', ['topic' => $topic]) }}" 
 									class="group block w-[140px] md:w-[150px] lg:w-[160px] transition-all duration-200 hover:scale-105">
-									<div class="relative overflow-hidden rounded-xl {{ $isActive ? 'ring-2 ring-emerald-500 ring-offset-2' : '' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md">
+									<div class="relative overflow-hidden rounded-lg {{ $isActive ? 'ring-2 ring-teal-500 ring-offset-2' : '' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md bg-white">
 										@if($topicImage)
 											<img 
 												src="{{ $topicImage }}" 
 												alt="{{ $topic }}"
-												class="w-full h-full object-cover {{ $isActive ? 'opacity-100' : 'opacity-90 group-hover:opacity-100' }} transition-opacity duration-200"
+												class="w-full h-full object-cover {{ $isActive ? 'opacity-100' : 'opacity-95 group-hover:opacity-100' }} transition-opacity duration-200"
 												loading="lazy"
 											>
 										@else
-											<div class="w-full h-full bg-gradient-to-br {{ $isActive ? 'from-emerald-500 to-emerald-600' : 'from-gray-200 to-gray-300 group-hover:from-gray-300 group-hover:to-gray-400' }} transition-all duration-200 flex items-center justify-center">
+											<div class="w-full h-full bg-gradient-to-br {{ $isActive ? 'from-teal-500 to-teal-600' : 'from-gray-100 to-gray-200 group-hover:from-gray-200 group-hover:to-gray-300' }} transition-all duration-200 flex items-center justify-center">
 												@php
 													$topicIcon = match(strtolower($topic)) {
 														'cardiology' => 'M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z',
@@ -314,9 +381,11 @@
 											</div>
 										@endif
 										<div class="absolute inset-0 flex items-end justify-center p-2 sm:p-3">
-											<span class="text-xs sm:text-sm font-semibold {{ $isActive ? 'text-white drop-shadow-lg' : 'text-gray-900 bg-white/80 backdrop-blur-sm px-2 py-1 rounded' }} leading-tight text-center">
-												{{ $topic }}
-											</span>
+											<div class="text-center w-full px-2">
+												<span class="text-xs sm:text-sm font-semibold text-gray-900 bg-white px-2 py-1 rounded leading-tight block" style="text-align: center;">
+													{{ $topic }}
+												</span>
+											</div>
 										</div>
 									</div>
 								</a>
@@ -330,7 +399,7 @@
 
 	<!-- Search Section -->
 	<section class="mt-4 sm:mt-6 md:mt-8">
-		<div class="bg-white rounded-xl sm:rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-5 md:p-6">
+		<div class="bg-white border-b border-gray-200 p-4 sm:p-5 md:p-6">
 			<form id="blog-search-form" class="blog-ajax-search-form" action="{{ route('blog.index') }}" method="GET" data-ajax-list="true" data-results="#blog-articles-container">
 				<div class="relative">
 					<input 
@@ -339,7 +408,7 @@
 						id="blog-search-input"
 						value="{{ request('q') }}"
 						placeholder="Search articles by title, topic, author, or content..." 
-						class="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2.5 sm:py-3 md:py-3.5 text-sm sm:text-base border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 touch-manipulation"
+						class="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2.5 sm:py-3 md:py-3.5 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400 touch-manipulation"
 						autocomplete="off"
 					>
 					<div class="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -372,9 +441,9 @@
 				@if(request('topic'))
 					<div class="flex items-center gap-2">
 						<span class="text-gray-600 text-xs sm:text-sm md:text-base">
-							Topic: <span class="font-semibold text-emerald-700">{{ e(request('topic')) }}</span>
+							Topic: <span class="font-semibold text-teal-700">{{ e(request('topic')) }}</span>
 						</span>
-						<a href="{{ route('blog.index', ['q' => request('q') ? e(request('q')) : null]) }}" class="text-emerald-700 hover:text-emerald-800 text-xs sm:text-sm">
+						<a href="{{ route('blog.index', ['q' => request('q') ? e(request('q')) : null]) }}" class="text-teal-700 hover:text-teal-800 text-xs sm:text-sm">
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
 							</svg>
@@ -384,7 +453,7 @@
 				@if(request('q'))
 					<div class="flex items-center gap-2">
 						<span class="text-gray-600 text-xs sm:text-sm md:text-base">
-							Search: <span class="font-semibold text-emerald-700">"{{ e(request('q')) }}"</span>
+							Search: <span class="font-semibold text-teal-700">"{{ e(request('q')) }}"</span>
 						</span>
 					</div>
 				@endif
@@ -402,7 +471,7 @@
 		
 		<!-- Loading indicator -->
 		<div id="blog-loading" class="hidden text-center py-8 sm:py-12">
-			<div class="inline-flex items-center gap-2 text-emerald-700">
+			<div class="inline-flex items-center gap-2 text-teal-700">
 				<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
 					<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
