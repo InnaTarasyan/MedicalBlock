@@ -50,6 +50,20 @@ class BlogController extends Controller
         // Get search term for highlighting
         $searchTerm = $request->has('q') && $request->q ? trim($request->q) : null;
 
+        // Get statistics for hero section (only when not filtering)
+        $totalArticles = null;
+        $totalTopics = null;
+        if (!$request->has('topic') && !$request->has('q')) {
+            $totalArticles = BlogPost::whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->count();
+            $totalTopics = BlogPost::whereNotNull('published_at')
+                ->where('published_at', '<=', now())
+                ->whereNotNull('topic')
+                ->distinct()
+                ->count('topic');
+        }
+
         // If AJAX request, return JSON with HTML
         if ($request->wantsJson() || $request->ajax()) {
             try {
@@ -84,7 +98,7 @@ class BlogController extends Controller
             }
         }
 
-        return view('blog.index', compact('posts', 'topics', 'searchTerm'));
+        return view('blog.index', compact('posts', 'topics', 'searchTerm', 'totalArticles', 'totalTopics'));
     }
 
     /**

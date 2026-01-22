@@ -5,10 +5,91 @@
 @section('content')
 <div class="grid gap-4 sm:gap-6 md:gap-8">
 	<!-- Hero Section -->
-	<section class="relative w-full overflow-hidden mx-0 sm:mx-0 px-0 sm:px-0 bg-white border-b border-gray-200">
-		<div class="relative z-10 px-4 py-8 sm:py-12 md:py-16 lg:py-20 sm:px-8 md:px-10 text-center">
-			<h1 class="text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6" style="font-weight: 700; line-height: 1.2;">Medical Blog</h1>
-			<p class="text-gray-600 text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2 sm:px-0" style="line-height: 1.6;">Expert health insights, medical articles, and wellness tips from healthcare professionals</p>
+	<section class="relative w-full overflow-hidden mx-0 sm:mx-0 px-0 sm:px-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 border-b border-gray-200">
+		<!-- Decorative background elements -->
+		<div class="absolute inset-0 hidden sm:block pointer-events-none">
+			<div class="absolute w-64 h-64 bg-emerald-200/20 blur-3xl rounded-full" style="top: -120px; left: -60px;"></div>
+			<div class="absolute w-72 h-72 bg-teal-200/20 blur-3xl rounded-full" style="bottom: -180px; right: -40px;"></div>
+			<div class="absolute w-48 h-48 bg-cyan-200/20 blur-3xl rounded-full" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+		</div>
+		
+		<div class="relative z-10 px-4 py-10 sm:py-14 md:py-16 lg:py-24 sm:px-6 md:px-8 lg:px-12 text-center">
+			<!-- Icon/Logo -->
+			<div class="flex justify-center mb-4 sm:mb-5 md:mb-6">
+				<div class="relative">
+					<div class="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full"></div>
+					<div class="relative bg-gradient-to-br from-emerald-500 to-teal-600 p-3 sm:p-4 md:p-5 rounded-2xl shadow-lg">
+						<svg class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Main Heading -->
+			<h1 class="text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-5 lg:mb-6" style="font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
+				Medical Blog
+			</h1>
+			
+			<!-- Subtitle -->
+			<p class="text-gray-700 text-base sm:text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto px-2 sm:px-4 mb-6 sm:mb-8 md:mb-10" style="line-height: 1.6; font-weight: 400;">
+				Expert health insights, medical articles, and wellness tips from healthcare professionals
+			</p>
+			
+			<!-- Statistics & Trust Indicators -->
+			@if(isset($totalArticles) && isset($totalTopics))
+			<div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 mb-4 sm:mb-6">
+				<!-- Total Articles -->
+				<div class="flex items-center gap-2 sm:gap-3 bg-white/80 backdrop-blur-sm px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full shadow-sm hover:shadow-md transition-shadow">
+					<svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+					</svg>
+					<div class="text-left">
+						<div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 leading-tight">{{ number_format($totalArticles) }}</div>
+						<div class="text-xs sm:text-sm text-gray-600 leading-tight">Articles</div>
+					</div>
+				</div>
+				
+				<!-- Total Topics -->
+				<div class="flex items-center gap-2 sm:gap-3 bg-white/80 backdrop-blur-sm px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full shadow-sm hover:shadow-md transition-shadow">
+					<svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-teal-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+					</svg>
+					<div class="text-left">
+						<div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 leading-tight">{{ number_format($totalTopics) }}</div>
+						<div class="text-xs sm:text-sm text-gray-600 leading-tight">Topics</div>
+					</div>
+				</div>
+				
+				<!-- Trusted Sources -->
+				<div class="flex items-center gap-2 sm:gap-3 bg-white/80 backdrop-blur-sm px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full shadow-sm hover:shadow-md transition-shadow">
+					<svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-cyan-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+					</svg>
+					<div class="text-left">
+						<div class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 leading-tight">40+</div>
+						<div class="text-xs sm:text-sm text-gray-600 leading-tight">Trusted Sources</div>
+					</div>
+				</div>
+			</div>
+			@endif
+			
+			<!-- Trust Badge -->
+			<div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600 mt-4 sm:mt-6">
+				<div class="flex items-center gap-1.5 sm:gap-2">
+					<svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+					</svg>
+					<span>Curated from WHO, Mayo Clinic, WebMD & more</span>
+				</div>
+				<span class="hidden sm:inline text-gray-400">•</span>
+				<div class="flex items-center gap-1.5 sm:gap-2">
+					<svg class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+					</svg>
+					<span>Updated daily</span>
+				</div>
+			</div>
 		</div>
 	</section>
 
