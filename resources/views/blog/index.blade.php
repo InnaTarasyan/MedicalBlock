@@ -354,8 +354,8 @@
 			</ul>
 			
 			<!-- Desktop: Horizontal scrolling -->
-			<div class="md:overflow-x-auto scrollbar-hide pb-2 -mx-4 md:-mx-6 px-4 md:px-6">
-				<ul class="flex flex-col md:flex-row md:flex-nowrap gap-3 md:gap-4 lg:gap-5">
+			<div class="hidden md:block md:overflow-x-auto scrollbar-hide pb-2 -mx-4 md:-mx-6 px-4 md:px-6">
+				<ul class="flex md:flex-row md:flex-nowrap gap-3 md:gap-4 lg:gap-5">
 						@php
 							$getTopicImage = function($topicName) {
 								// First check local images

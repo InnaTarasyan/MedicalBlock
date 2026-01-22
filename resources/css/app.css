@@ -3780,6 +3780,30 @@ body.mobile-popup-open {
 		.organization-card + .organization-card {
 			margin-top: 1rem;
 		}
+
+		/* Blog topic filter section - mobile improvements */
+		section .grid.grid-cols-2.sm\:hidden {
+			gap: 0.75rem !important;
+			width: 100% !important;
+			max-width: 100% !important;
+			overflow: visible !important;
+		}
+
+		section .grid.grid-cols-2.sm\:hidden li {
+			width: 100% !important;
+			min-width: 0 !important;
+		}
+
+		section .grid.grid-cols-2.sm\:hidden a {
+			width: 100% !important;
+			display: block !important;
+		}
+
+		/* Ensure topic cards don't overflow on mobile */
+		section .grid.grid-cols-2.sm\:hidden .aspect-\[4\/3\] {
+			width: 100% !important;
+			max-width: 100% !important;
+		}
 	}
 
 	@media (max-width: 640px) {

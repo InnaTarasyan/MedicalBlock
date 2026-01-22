@@ -94,7 +94,7 @@
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6 text-brand-600 group-hover:text-brand-700 transition-colors">
 								<path d="M12 4v16M4 12h16" stroke-width="2" stroke-linecap="round"/>
 							</svg>
-							<span>PrimeDoctors</span>
+							<span>MedicalBlock</span>
 						</a>
 						<!--
 						<button
@@ -115,9 +115,9 @@
 						</button>
 						-->
 					</div>
-					<nav class="hidden sm:flex items-center gap-6 text-sm">
-						<a href="{{ route('blog.index') }}" class="text-gray-700 hover:text-brand-700 transition-colors font-medium">Doctors</a>
-					</nav>
+					{{--<nav class="hidden sm:flex items-center gap-6 text-sm">--}}
+						{{--<a href="{{ route('blog.index') }}" class="text-gray-700 hover:text-brand-700 transition-colors font-medium">Doctors</a>--}}
+					{{--</nav>--}}
 					<button
 						@click="open = !open"
 						class="sm:hidden mb-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-transparent text-sm font-semibold text-white transition-all mobile-menu-toggle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500"
@@ -167,7 +167,7 @@
 								</button>
 							</div>
 						</div>
-						<a href="{{ route('blog.index') }}" class="block px-4 py-2.5 hover:bg-gray-50 rounded-md transition-colors text-gray-700 hover:text-gray-900">Doctors</a>
+						{{--<a href="{{ route('blog.index') }}" class="block px-4 py-2.5 hover:bg-gray-50 rounded-md transition-colors text-gray-700 hover:text-gray-900">Doctors</a>--}}
 					</div>
 				</div>
 			</div>
