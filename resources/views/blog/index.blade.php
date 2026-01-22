@@ -273,8 +273,8 @@
 			</ul>
 			
 			<!-- Desktop: Horizontal scrolling -->
-			<div class="hidden md:block overflow-x-auto scrollbar-hide pb-2 -mx-4 md:-mx-6 px-4 md:px-6">
-				<ul class="flex gap-3 md:gap-4 lg:gap-5">
+			<div class="md:overflow-x-auto scrollbar-hide pb-2 -mx-4 md:-mx-6 px-4 md:px-6">
+				<ul class="flex flex-col md:flex-row md:flex-nowrap gap-3 md:gap-4 lg:gap-5">
 						@php
 							$getTopicImage = function($topicName) {
 								// First check local images
@@ -285,22 +285,22 @@
 									return asset($imagePath);
 								}
 								
-								// Use Unsplash images for topics (Healthline-style)
+								// Use unique Unsplash images for each topic (no repeats)
 								$topicImages = [
 									'cardiology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
 									'neurology' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
 									'dermatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
 									'pediatrics' => 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop',
-									'oncology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'oncology' => 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop',
 									'orthopedics' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
-									'gynecology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
+									'gynecology' => 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=300&fit=crop',
 									'psychiatry' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop',
-									'endocrinology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
-									'gastroenterology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
-									'ophthalmology' => 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop',
-									'urology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
-									'pulmonology' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop',
-									'rheumatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop',
+									'endocrinology' => 'https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=400&h=300&fit=crop',
+									'gastroenterology' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop',
+									'ophthalmology' => 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop',
+									'urology' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&auto=format&q=80&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+									'pulmonology' => 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop&auto=format&q=80&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+									'rheumatology' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop&auto=format&q=80&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 								];
 								
 								$key = strtolower($topicName);
@@ -309,9 +309,9 @@
 						@endphp
 						
 						<!-- All Topics Card -->
-						<li class="flex-shrink-0">
+						<li class="w-full md:flex-shrink-0 md:w-auto">
 							<a href="{{ route('blog.index') }}" 
-								class="group block w-[140px] md:w-[150px] lg:w-[160px] transition-all duration-200 hover:scale-105">
+								class="group block w-full md:w-[150px] lg:w-[160px] transition-all duration-200 hover:scale-105">
 								<div class="relative overflow-hidden rounded-xl bg-gradient-to-br {{ !request('topic') ? 'from-emerald-600 to-emerald-700 ring-2 ring-emerald-500 ring-offset-2' : 'from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md">
 									@if(!request('topic'))
 										<div class="absolute inset-0 bg-gradient-to-br from-emerald-600 to-emerald-700"></div>
@@ -333,9 +333,9 @@
 								$topicImage = $getTopicImage($topic);
 								$isActive = request('topic') === $topic;
 							@endphp
-							<li class="flex-shrink-0">
+							<li class="w-full md:flex-shrink-0 md:w-auto">
 								<a href="{{ route('blog.index', ['topic' => $topic]) }}" 
-									class="group block w-[140px] md:w-[150px] lg:w-[160px] transition-all duration-200 hover:scale-105">
+									class="group block w-full md:w-[150px] lg:w-[160px] transition-all duration-200 hover:scale-105">
 									<div class="relative overflow-hidden rounded-lg {{ $isActive ? 'ring-2 ring-teal-500 ring-offset-2' : '' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md bg-white">
 										@if($topicImage)
 											<img 
