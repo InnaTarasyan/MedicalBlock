@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'All Topics - Medical Blog')
+@section('title', 'All Topics - Medical Library')
 
 @section('content')
 <div class="grid gap-6 sm:gap-8">

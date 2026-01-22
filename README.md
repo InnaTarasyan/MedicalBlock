@@ -8,7 +8,7 @@
 
 ## 🌟 About MedicalBlock
 
-**MedicalBlock** is an innovative and powerful medical content aggregation platform that revolutionizes how healthcare information is discovered, curated, and presented. This cutting-edge Laravel application serves as a comprehensive medical blog system that automatically fetches high-quality medical articles from trusted sources across the internet, making it an invaluable resource for healthcare professionals, patients, researchers, and anyone seeking reliable medical information.
+**MedicalBlock** is an innovative and powerful medical content aggregation platform that revolutionizes how healthcare information is discovered, curated, and presented. This cutting-edge Laravel application serves as a comprehensive medical library system that automatically fetches high-quality medical articles from trusted sources across the internet, making it an invaluable resource for healthcare professionals, patients, researchers, and anyone seeking reliable medical information.
 
 ### Why MedicalBlock is Incredibly Cool and Useful
 

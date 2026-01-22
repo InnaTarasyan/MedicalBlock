@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Medical Blog - Health Articles & Insights')
+@section('title', 'Medical Library - Health Articles & Insights')
 
 @section('content')
 <div class="grid gap-4 sm:gap-6 md:gap-8">
@@ -28,7 +28,7 @@
 			
 			<!-- Main Heading -->
 			<h1 class="text-gray-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-3 sm:mb-4 md:mb-5 lg:mb-6" style="font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
-				Medical Blog
+				Medical Library
 			</h1>
 			
 			<!-- Subtitle -->

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $post->title . ' - Medical Blog')
+@section('title', $post->title . ' - Medical Library')
 
 @section('breadcrumbs')
 	<a href="{{ route('blog.index') }}" class="hover:underline">Blog</a>
