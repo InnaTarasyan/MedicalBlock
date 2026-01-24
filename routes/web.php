@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 
 // Legal Pages
 Route::get('/privacy-policy', function () {
@@ -15,6 +16,11 @@ Route::get('/terms-of-use', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+// Contact Form (rate limited: 5 requests per minute per IP)
+Route::post('/contact', [ContactController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('contact.store');
 
 // Blog
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');

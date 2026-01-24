@@ -105,9 +105,9 @@
 						</button>
 						-->
 					</div>
-					{{--<nav class="hidden sm:flex items-center gap-6 text-sm">--}}
-						{{--<a href="{{ route('blog.index') }}" class="text-gray-700 hover:text-brand-700 transition-colors font-medium">Doctors</a>--}}
-					{{--</nav>--}}
+					<nav class="hidden sm:flex items-center gap-6 text-sm">
+						<a href="/about" class="text-gray-700 hover:text-brand-700 transition-colors font-medium">About</a>
+					</nav>
 					<button
 						@click="open = !open"
 						class="sm:hidden mb-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-transparent text-sm font-semibold text-white transition-all mobile-menu-toggle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500"
@@ -157,7 +157,7 @@
 								</button>
 							</div>
 						</div>
-						{{--<a href="{{ route('blog.index') }}" class="block px-4 py-2.5 hover:bg-gray-50 rounded-md transition-colors text-gray-700 hover:text-gray-900">Doctors</a>--}}
+						<a href="/about" class="block px-4 py-2.5 hover:bg-gray-50 rounded-md transition-colors text-gray-700 hover:text-gray-900">About</a>
 					</div>
 				</div>
 			</div>
