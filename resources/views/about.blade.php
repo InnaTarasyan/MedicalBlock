@@ -242,122 +242,122 @@
 
 						<!-- Contact Form -->
 						<div id="contact-form-container" class="bg-white border-2 border-gray-200 rounded-xl p-6 sm:p-8">
-							{{--<h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Contact Us</h3>--}}
-							{{--<p class="text-gray-700 leading-relaxed mb-6">--}}
-								{{--Have questions, feedback, or would like to get in touch? Fill out the form below and we'll get back to you as soon as possible.--}}
-							{{--</p>--}}
+							<h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Contact Us</h3>
+							<p class="text-gray-700 leading-relaxed mb-6">
+								Have questions, feedback, or would like to get in touch? Fill out the form below and we'll get back to you as soon as possible.
+							</p>
 
-							{{--<!-- Success Message -->--}}
-							{{--@if(session('contact_success'))--}}
-								{{--<div class="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">--}}
-									{{--<p class="text-green-800 font-semibold">{{ session('contact_success') }}</p>--}}
-								{{--</div>--}}
-							{{--@endif--}}
+							<!-- Success Message -->
+							@if(session('contact_success'))
+								<div class="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+									<p class="text-green-800 font-semibold">{{ session('contact_success') }}</p>
+								</div>
+							@endif
 
-							{{--<!-- Error Message -->--}}
-							{{--@if(session('contact_error'))--}}
-								{{--<div class="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">--}}
-									{{--<p class="text-red-800 font-semibold">{{ session('contact_error') }}</p>--}}
-								{{--</div>--}}
-							{{--@endif--}}
+							<!-- Error Message -->
+							@if(session('contact_error'))
+								<div class="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+									<p class="text-red-800 font-semibold">{{ session('contact_error') }}</p>
+								</div>
+							@endif
 
-							{{--<form action="{{ route('contact.store') }}" method="POST" class="space-y-6" id="contact-form">--}}
-								{{--@csrf--}}
+							<form action="{{ route('contact.store') }}" method="POST" class="space-y-6" id="contact-form">
+								@csrf
 
-								{{--<!-- Name Field -->--}}
-								{{--<div>--}}
-									{{--<label for="name" class="block text-sm font-semibold text-gray-700 mb-2">--}}
-										{{--Name <span class="text-red-500">*</span>--}}
-									{{--</label>--}}
-									{{--<input --}}
-										{{--type="text" --}}
-										{{--id="name" --}}
-										{{--name="name" --}}
-										{{--value="{{ old('name') }}"--}}
-										{{--required--}}
-										{{--class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors @error('name') border-red-500 @enderror"--}}
-										{{--placeholder="Your name"--}}
-									{{-->--}}
-									{{--@error('name')--}}
-										{{--<p class="mt-1 text-sm text-red-600">{{ $message }}</p>--}}
-									{{--@enderror--}}
-								{{--</div>--}}
+								<!-- Name Field -->
+								<div>
+									<label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
+										Name <span class="text-red-500">*</span>
+									</label>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										value="{{ old('name') }}"
+										required
+										class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors @error('name') border-red-500 @enderror"
+										placeholder="Your name"
+									>
+									@error('name')
+										<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+									@enderror
+								</div>
 
-								{{--<!-- Email Field -->--}}
-								{{--<div>--}}
-									{{--<label for="email" class="block text-sm font-semibold text-gray-700 mb-2">--}}
-										{{--Email <span class="text-red-500">*</span>--}}
-									{{--</label>--}}
-									{{--<input --}}
-										{{--type="email" --}}
-										{{--id="email" --}}
-										{{--name="email" --}}
-										{{--value="{{ old('email') }}"--}}
-										{{--required--}}
-										{{--class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors @error('email') border-red-500 @enderror"--}}
-										{{--placeholder="your.email@example.com"--}}
-									{{-->--}}
-									{{--@error('email')--}}
-										{{--<p class="mt-1 text-sm text-red-600">{{ $message }}</p>--}}
-									{{--@enderror--}}
-								{{--</div>--}}
+								<!-- Email Field -->
+								<div>
+									<label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+										Email <span class="text-red-500">*</span>
+									</label>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										value="{{ old('email') }}"
+										required
+										class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors @error('email') border-red-500 @enderror"
+										placeholder="your.email@example.com"
+									>
+									@error('email')
+										<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+									@enderror
+								</div>
 
-								{{--<!-- Subject Field -->--}}
-								{{--<div>--}}
-									{{--<label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">--}}
-										{{--Subject <span class="text-red-500">*</span>--}}
-									{{--</label>--}}
-									{{--<input --}}
-										{{--type="text" --}}
-										{{--id="subject" --}}
-										{{--name="subject" --}}
-										{{--value="{{ old('subject') }}"--}}
-										{{--required--}}
-										{{--class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors @error('subject') border-red-500 @enderror"--}}
-										{{--placeholder="What is this regarding?"--}}
-									{{-->--}}
-									{{--@error('subject')--}}
-										{{--<p class="mt-1 text-sm text-red-600">{{ $message }}</p>--}}
-									{{--@enderror--}}
-								{{--</div>--}}
+								<!-- Subject Field -->
+								<div>
+									<label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">
+										Subject <span class="text-red-500">*</span>
+									</label>
+									<input
+										type="text"
+										id="subject"
+										name="subject"
+										value="{{ old('subject') }}"
+										required
+										class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors @error('subject') border-red-500 @enderror"
+										placeholder="What is this regarding?"
+									>
+									@error('subject')
+										<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+									@enderror
+								</div>
 
-								{{--<!-- Message Field -->--}}
-								{{--<div>--}}
-									{{--<label for="message" class="block text-sm font-semibold text-gray-700 mb-2">--}}
-										{{--Message <span class="text-red-500">*</span>--}}
-									{{--</label>--}}
-									{{--<textarea --}}
-										{{--id="message" --}}
-										{{--name="message" --}}
-										{{--rows="6"--}}
-										{{--maxlength="5000"--}}
-										{{--required--}}
-										{{--class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-y @error('message') border-red-500 @enderror"--}}
-										{{--placeholder="Your message here...">{{ old('message') }}</textarea>--}}
-									{{--@error('message')--}}
-										{{--<p class="mt-1 text-sm text-red-600">{{ $message }}</p>--}}
-									{{--@enderror--}}
-									{{--<div class="mt-1 flex justify-between items-center">--}}
-										{{--<p class="text-xs text-gray-500">Maximum 5000 characters</p>--}}
-										{{--<p class="text-xs text-gray-500">--}}
-											{{--<span id="message-char-count">0</span> / 5000--}}
-										{{--</p>--}}
-									{{--</div>--}}
-								{{--</div>--}}
+								<!-- Message Field -->
+								<div>
+									<label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
+										Message <span class="text-red-500">*</span>
+									</label>
+									<textarea
+										id="message"
+										name="message"
+										rows="6"
+										maxlength="5000"
+										required
+										class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-y @error('message') border-red-500 @enderror"
+										placeholder="Your message here...">{{ old('message') }}</textarea>
+									@error('message')
+										<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+									@enderror
+									<div class="mt-1 flex justify-between items-center">
+										<p class="text-xs text-gray-500">Maximum 5000 characters</p>
+										<p class="text-xs text-gray-500">
+											<span id="message-char-count">0</span> / 5000
+										</p>
+									</div>
+								</div>
 
-								{{--<!-- Submit Button -->--}}
-								{{--<div>--}}
-									{{--<button --}}
-											 {{--style="background-color: gray; color: #000;"--}}
-										{{--type="submit"--}}
-										{{--id="contact-submit-btn"--}}
-										{{--class="w-full sm:w-auto px-8 py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"--}}
-									{{-->--}}
-										{{--<span id="submit-text">Send Message</span>--}}
-										{{--<span id="submit-loading" class="hidden">Sending...</span>--}}
-									{{--</button>--}}
-								{{--</div>--}}
-							{{--</form>--}}
+								<!-- Submit Button -->
+								<div>
+									<button
+											 style="background-color: gray; color: #000;"
+										type="submit"
+										id="contact-submit-btn"
+										class="w-full sm:w-auto px-8 py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+									>
+										<span id="submit-text">Send Message</span>
+										<span id="submit-loading" class="hidden">Sending...</span>
+									</button>
+								</div>
+							</form>
 
 							<script>
 								document.addEventListener('DOMContentLoaded', function() {
