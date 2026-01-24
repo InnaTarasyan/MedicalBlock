@@ -37,8 +37,11 @@
 							<!-- Information -->
 							<div class="flex-1 text-center md:text-left">
 								<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Inna Tarasyan</h2>
-								<p class="text-lg sm:text-xl text-brand-700 font-semibold mb-4">Web Developer & Founder</p>
+								<p class="text-lg sm:text-xl text-brand-700 font-semibold mb-4">Web Developer & Crypto Enthusiast</p>
 								<div class="space-y-3 text-gray-700 leading-relaxed">
+									<p>
+										Hello! I'm a passionate web developer from Armenia, dedicated to creating tools that make crypto trading more accessible and informed. I believe in the power of real-time data and user-friendly interfaces to help traders make better decisions.
+									</p>
 									<p>
 										MedicalBlock was developed and is maintained by <strong class="text-gray-900">Inna Tarasyan</strong>, a dedicated web developer passionate about making health information more accessible and useful for everyone.
 									</p>
@@ -48,6 +51,29 @@
 									<p class="bg-white rounded-lg p-4 border border-brand-200 mt-4">
 										<span class="text-brand-700 font-semibold">🤝 Important:</span> We kindly ask that you do not use or share information from this site without first reaching out to the author. If you have questions or would like to use any content, please contact <strong>Inna Tarasyan</strong>—I'm always happy to connect!
 									</p>
+									
+									<!-- Links Section -->
+									<div class="bg-white rounded-lg p-4 border border-brand-200 mt-4">
+										<h3 class="text-lg font-semibold text-gray-900 mb-3">Connect & Explore</h3>
+										<div class="space-y-2">
+											<p class="text-gray-700">
+												<strong>GitHub:</strong> <a href="https://github.com/InnaTarasyan" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://github.com/InnaTarasyan</a>
+											</p>
+											<div class="mt-3">
+												<p class="text-gray-700 font-semibold mb-2">My Websites:</p>
+												<ul class="list-disc pl-6 space-y-1 text-gray-700">
+													<li><a href="https://armmagazine.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://armmagazine.shop/</a></li>
+													<li><a href="https://cryptotrading.website/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://cryptotrading.website/</a></li>
+													<li><a href="https://hurgada.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://hurgada.site/</a></li>
+													<li><a href="https://innatarasyan.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://innatarasyan.site/</a></li>
+													<li><a href="https://popularmagazines.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://popularmagazines.shop/</a></li>
+													<li><a href="https://primedoctors.store/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://primedoctors.store/</a></li>
+													<li><a href="https://rusarticles.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://rusarticles.shop/</a></li>
+													<li><a href="https://wikchenlun.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://wikchenlun.site/</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -169,7 +195,7 @@
 					</p>
 					<div class="bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-6">
 						<p class="text-gray-800 font-semibold mb-2 text-lg">Inna Tarasyan</p>
-						<p class="text-gray-700 mb-2">Web Developer & Founder</p>
+						<p class="text-gray-700 mb-2">Web Developer & Crypto Enthusiast</p>
 						<p class="text-gray-700">
 							For inquiries, please use the contact information available in the website footer.
 						</p>
