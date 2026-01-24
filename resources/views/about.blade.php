@@ -27,7 +27,7 @@
 							<!-- Image -->
 							<div class="flex-shrink-0">
 								<img 
-									src="{{ asset('img/inna.jpg') }}" 
+									src="{{ asset('img/inna1.jpg') }}"
 									alt="Inna Tarasyan - Web Developer" 
 									class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full object-cover border-4 border-white shadow-lg"
 									loading="eager"
