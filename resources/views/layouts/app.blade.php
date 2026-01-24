@@ -195,6 +195,8 @@
 				<!-- Legal Links -->
 				<div class="footer-section footer-links-wrapper">
 					<div class="footer-links">
+						<a href="{{ route('about') }}" class="footer-link">About</a>
+						<span class="footer-link-separator">|</span>
 						<a href="{{ route('legal.privacy') }}" class="footer-link">Privacy Policy</a>
 						<span class="footer-link-separator">|</span>
 						<a href="{{ route('legal.terms') }}" class="footer-link">Terms of Use</a>

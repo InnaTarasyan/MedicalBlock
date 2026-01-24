@@ -12,6 +12,10 @@ Route::get('/terms-of-use', function () {
     return view('legal.terms-of-use');
 })->name('legal.terms');
 
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 // Blog
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/topics', [BlogController::class, 'topics'])->name('blog.topics');
