@@ -2,7 +2,11 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+		<meta name="theme-color" content="#10b981">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 		<!-- Yandex.Metrika counter -->
 		<script type="text/javascript">
@@ -73,18 +77,32 @@
 					height: 2rem;
 				}
 			}
+			/* Word breaking for long text and URLs */
+			.overflow-wrap-anywhere {
+				overflow-wrap: anywhere;
+				word-break: break-word;
+			}
+			.word-break-break-word {
+				word-break: break-word;
+				overflow-wrap: break-word;
+			}
 		</style>
 	</head>
 	<body class="min-h-screen bg-gray-50 text-gray-900 antialiased flex flex-col">
-		<header class="app-header">
+		<!-- Skip to main content link for accessibility -->
+		<a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-br-lg">
+			Skip to main content
+		</a>
+		
+		<header class="app-header" role="banner">
 			<div class="container-tight" x-data="{ open: false }">
 				<div class="flex items-center justify-between h-16 gap-4">
-					<div class="flex items-center gap-3 min-w-0">
-						<a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 font-semibold text-lg text-brand-700 group">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6 text-brand-600 group-hover:text-brand-700 transition-colors">
+					<div class="flex items-center gap-3 min-w-0 flex-1">
+						<a href="{{ route('blog.index') }}" class="inline-flex items-center gap-2 font-semibold text-lg text-brand-700 group transition-all hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:rounded-lg px-2 py-1 -mx-2 -my-1" aria-label="MedicalBlock Home">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6 text-brand-600 group-hover:text-brand-700 transition-colors flex-shrink-0" aria-hidden="true">
 								<path d="M12 4v16M4 12h16" stroke-width="2" stroke-linecap="round"/>
 							</svg>
-							<span>MedicalBlock</span>
+							<span class="truncate">MedicalBlock</span>
 						</a>
 						<!--
 						<button
@@ -105,15 +123,16 @@
 						</button>
 						-->
 					</div>
-					<nav class="hidden sm:flex items-center gap-6 text-sm">
-						<a href="/about" class="text-gray-700 hover:text-brand-700 transition-colors font-medium">About</a>
+					<nav class="hidden sm:flex items-center gap-6 text-sm" role="navigation" aria-label="Main navigation">
+						<a href="/about" class="text-gray-700 hover:text-brand-700 transition-colors font-medium px-3 py-2 rounded-lg hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">About</a>
 					</nav>
 					<button
 						@click="open = !open"
-						class="sm:hidden mb-2 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-transparent text-sm font-semibold text-white transition-all mobile-menu-toggle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500"
+						class="sm:hidden inline-flex items-center justify-center gap-2 min-w-[44px] min-h-[44px] px-3 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 hover:text-brand-700 transition-all mobile-menu-toggle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500"
 						:aria-label="open ? 'Close menu' : 'Open menu'"
 						aria-expanded="false"
-						:aria-expanded="open">
+						:aria-expanded="open"
+						type="button">
 						<span class="mobile-menu-toggle__icon" aria-hidden="true">
 							<svg x-cloak x-show="!open" x-transition.opacity xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
@@ -163,16 +182,16 @@
 			</div>
 		</header>
 
-		<main class="container-tight py-4 sm:py-6 md:py-8 flex-grow">
+		<main id="main-content" class="container-tight py-4 sm:py-6 md:py-8 flex-grow" role="main">
 			@hasSection('breadcrumbs')
-				<nav class="mb-4 sm:mb-6 text-sm text-gray-600">
+				<nav class="mb-4 sm:mb-6 text-sm text-gray-600" aria-label="Breadcrumb">
 					@yield('breadcrumbs')
 				</nav>
 			@endif
 			@yield('content')
 		</main>
 
-	<footer class="app-footer">
+	<footer class="app-footer" role="contentinfo">
 		<div class="container-tight py-8 sm:py-10">
 			<div class="footer-content">
 				<!-- Copyright and Developer Info -->

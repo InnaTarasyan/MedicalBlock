@@ -15,7 +15,7 @@
 		@if($post->valid_image_url)
 			<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-100">
 				<img 
-					src="{{ $post->valid_image_url }}" 
+					src="{!! $post->valid_image_url !!}" 
 					alt="{{ $post->title }}"
 					class="w-full h-full object-cover"
 					loading="eager"
@@ -140,14 +140,14 @@
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 				@foreach($relatedPosts as $relatedPost)
 					<article class="group bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-						@if($relatedPost->valid_image_url)
-							<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gray-100">
-								<img 
-									src="{{ $relatedPost->valid_image_url }}" 
-									alt="{{ $relatedPost->title }}"
-									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-									loading="lazy"
-								>
+					@if($relatedPost->valid_image_url)
+						<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gray-100">
+							<img 
+								src="{!! $relatedPost->valid_image_url !!}" 
+								alt="{{ $relatedPost->title }}"
+								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+								loading="lazy"
+							>
 							</a>
 						@else
 							<a href="{{ route('blog.show', $relatedPost) }}" class="block relative h-48 overflow-hidden bg-gray-100">

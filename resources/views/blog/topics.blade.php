@@ -68,7 +68,7 @@
 							<div class="relative overflow-hidden rounded-xl transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-lg bg-gradient-to-br from-gray-50 to-gray-100">
 								@if($topicImage)
 									<img 
-										src="{{ $topicImage }}" 
+										src="{!! $topicImage !!}" 
 										alt="{{ $topic }}"
 										class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-200"
 										loading="lazy"

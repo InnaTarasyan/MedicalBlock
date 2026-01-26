@@ -190,7 +190,7 @@
 							<div class="relative overflow-hidden rounded-xl {{ $isActive ? 'ring-2 ring-emerald-500 ring-offset-2' : '' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md">
 								@if($topicImage)
 									<img 
-										src="{{ $topicImage }}" 
+										src="{!! $topicImage !!}" 
 										alt="{{ $topic }}"
 										class="w-full h-full object-cover {{ $isActive ? 'opacity-100' : 'opacity-90 group-hover:opacity-100' }} transition-opacity duration-200"
 										loading="lazy"
@@ -311,7 +311,7 @@
 							<div class="relative overflow-hidden rounded-xl {{ $isActive ? 'ring-2 ring-emerald-500 ring-offset-2' : '' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md">
 								@if($topicImage)
 									<img 
-										src="{{ $topicImage }}" 
+										src="{!! $topicImage !!}" 
 										alt="{{ $topic }}"
 										class="w-full h-full object-cover {{ $isActive ? 'opacity-100' : 'opacity-90 group-hover:opacity-100' }} transition-opacity duration-200"
 										loading="lazy"
@@ -429,7 +429,7 @@
 									<div class="relative overflow-hidden rounded-lg {{ $isActive ? 'ring-2 ring-teal-500 ring-offset-2' : '' }} transition-all duration-200 aspect-[4/3] shadow-sm hover:shadow-md bg-white">
 										@if($topicImage)
 											<img 
-												src="{{ $topicImage }}" 
+												src="{!! $topicImage !!}" 
 												alt="{{ $topic }}"
 												class="w-full h-full object-cover {{ $isActive ? 'opacity-100' : 'opacity-95 group-hover:opacity-100' }} transition-opacity duration-200"
 												loading="lazy"

@@ -21,14 +21,22 @@
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6" id="blog-articles-grid">
 		@foreach($posts as $post)
 			<article class="group bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 w-full max-w-full">
-				@if($post->valid_image_url)
+				@php
+					$imageUrl = $post->valid_image_url ?? $post->image_url;
+				@endphp
+				@if($imageUrl)
 					<a href="{{ route('blog.show', $post) }}" class="block relative h-36 sm:h-44 md:h-52 lg:h-56 overflow-hidden bg-gray-100">
 						<img 
-							src="{{ $post->valid_image_url }}" 
+							src="{!! $imageUrl !!}" 
 							alt="{{ $post->title }}"
 							class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-							loading="lazy"
+							onerror="this.onerror=null; this.style.display='none'; const fallback = this.parentElement.querySelector('.image-fallback'); if(fallback) fallback.style.display='flex';"
 						>
+						<div class="absolute inset-0 flex items-center justify-center image-fallback bg-gray-100" style="display: none;">
+							<svg class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+							</svg>
+						</div>
 						<div class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 md:top-4 md:right-4">
 							<span class="inline-flex items-center gap-1 rounded-full bg-white/95 backdrop-blur-sm px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 text-[10px] sm:text-xs font-semibold text-teal-700 shadow-sm">
 								{!! $highlightSearch($post->topic, $searchTerm ?? null) !!}

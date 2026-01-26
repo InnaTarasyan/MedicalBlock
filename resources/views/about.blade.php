@@ -22,7 +22,7 @@
 			<div class="prose prose-lg max-w-none">
 				<!-- About Inna Tarasyan - Featured Section -->
 				<section class="mb-8 sm:mb-12">
-					<div class="bg-gradient-to-br from-brand-50 to-brand-100 border-2 border-brand-200 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm">
+					<div class="bg-gradient-to-br from-brand-50 to-brand-100 border-2 border-brand-200 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm overflow-hidden">
 						<div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
 							<!-- Image -->
 							<div class="flex-shrink-0">
@@ -35,41 +35,41 @@
 							</div>
 							
 							<!-- Information -->
-							<div class="flex-1 text-center md:text-left">
-								<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">Inna Tarasyan</h2>
-								<p class="text-lg sm:text-xl text-brand-700 font-semibold mb-4">Web Developer & Crypto Enthusiast</p>
-								<div class="space-y-3 text-gray-700 leading-relaxed">
-									<p>
+							<div class="flex-1 text-center md:text-left min-w-0 w-full overflow-hidden">
+								<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 break-words">Inna Tarasyan</h2>
+								<p class="text-lg sm:text-xl text-brand-700 font-semibold mb-4 break-words">Web Developer & Crypto Enthusiast</p>
+								<div class="space-y-3 text-gray-700 leading-relaxed break-words w-full overflow-hidden">
+									<p class="break-words break-all overflow-wrap-anywhere">
 										Hello! I'm a passionate web developer from Armenia, dedicated to creating tools that make crypto trading more accessible and informed. I believe in the power of real-time data and user-friendly interfaces to help traders make better decisions.
 									</p>
-									<p>
+									<p class="break-words break-all overflow-wrap-anywhere">
 										MedicalBlock was developed and is maintained by <strong class="text-gray-900">Inna Tarasyan</strong>, a dedicated web developer passionate about making health information more accessible and useful for everyone.
 									</p>
-									<p>
+									<p class="break-words break-all overflow-wrap-anywhere">
 										With a commitment to excellence and user experience, Inna has created a comprehensive platform that aggregates trusted medical content from over 40 reputable sources, including the World Health Organization (WHO), National Institutes of Health (NIH), Mayo Clinic, WebMD, Healthline, and many other leading medical institutions.
 									</p>
-									<p class="bg-white rounded-lg p-4 border border-brand-200 mt-4">
+									<p class="bg-white rounded-lg p-4 border border-brand-200 mt-4 break-words break-all overflow-wrap-anywhere">
 										<span class="text-brand-700 font-semibold">🤝 Important:</span> We kindly ask that you do not use or share information from this site without first reaching out to the author. If you have questions or would like to use any content, please contact <strong>Inna Tarasyan</strong>—I'm always happy to connect!
 									</p>
 									
 									<!-- Links Section -->
-									<div class="bg-white rounded-lg p-4 border border-brand-200 mt-4">
-										<h3 class="text-lg font-semibold text-gray-900 mb-3">Connect & Explore</h3>
-										<div class="space-y-2">
-											<p class="text-gray-700">
-												<strong>GitHub:</strong> <a href="https://github.com/InnaTarasyan" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://github.com/InnaTarasyan</a>
+									<div class="bg-white rounded-lg p-4 border border-brand-200 mt-4 break-words break-all overflow-wrap-anywhere overflow-hidden">
+										<h3 class="text-lg font-semibold text-gray-900 mb-3 break-words">Connect & Explore</h3>
+										<div class="space-y-2 w-full overflow-hidden">
+											<p class="text-gray-700 break-words break-all overflow-wrap-anywhere">
+												<strong>GitHub:</strong> <a href="https://github.com/InnaTarasyan" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-all">https://github.com/InnaTarasyan</a>
 											</p>
-											<div class="mt-3">
-												<p class="text-gray-700 font-semibold mb-2">My Websites:</p>
-												<ul class="list-disc pl-6 space-y-1 text-gray-700">
-													<li><a href="https://armmagazine.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://armmagazine.shop/</a></li>
-													<li><a href="https://cryptotrading.website/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://cryptotrading.website/</a></li>
-													<li><a href="https://hurgada.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://hurgada.site/</a></li>
-													<li><a href="https://innatarasyan.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://innatarasyan.site/</a></li>
-													<li><a href="https://popularmagazines.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://popularmagazines.shop/</a></li>
-													<li><a href="https://primedoctors.store/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://primedoctors.store/</a></li>
-													<li><a href="https://rusarticles.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://rusarticles.shop/</a></li>
-													<li><a href="https://wikchenlun.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline">https://wikchenlun.site/</a></li>
+											<div class="mt-3 w-full overflow-hidden">
+												<p class="text-gray-700 font-semibold mb-2 break-words">My Websites:</p>
+												<ul class="list-disc pl-6 space-y-1 text-gray-700 break-words w-full overflow-hidden">
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://armmagazine.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://armmagazine.shop/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://cryptotrading.website/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://cryptotrading.website/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://hurgada.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://hurgada.site/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://innatarasyan.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://innatarasyan.site/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://popularmagazines.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://popularmagazines.shop/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://primedoctors.store/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://primedoctors.store/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://rusarticles.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://rusarticles.shop/</a></li>
+													<li class="break-words break-all overflow-wrap-anywhere"><a href="https://wikchenlun.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline break-all">https://wikchenlun.site/</a></li>
 												</ul>
 											</div>
 										</div>
