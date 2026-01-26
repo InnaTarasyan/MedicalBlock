@@ -9,17 +9,17 @@
 @endsection
 
 @section('content')
-<div class="max-w-4xl mx-auto">
+<div class="max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
 	<div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
 		<!-- Header -->
-		<div class="bg-gradient-to-r from-brand-600 to-brand-700 px-6 sm:px-8 lg:px-10 py-8 sm:py-10">
+		<div class="bg-gradient-to-r from-brand-600 to-brand-700 px-6 sm:px-8 lg:px-10 xl:px-12 py-8 sm:py-10">
 			<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3">About MedicalBlock</h1>
 			<p class="text-brand-100 text-base sm:text-lg">Your trusted source for medical and health information</p>
 		</div>
 
 		<!-- Content -->
-		<div class="px-6 sm:px-8 lg:px-10 py-8 sm:py-10 lg:py-12">
-			<div class="prose prose-lg max-w-none">
+		<div class="px-6 sm:px-8 lg:px-10 xl:px-12 py-8 sm:py-10 lg:py-12">
+			<div class="prose prose-lg max-w-none about-prose">
 				<!-- About Inna Tarasyan - Featured Section -->
 				<section class="mb-8 sm:mb-12">
 					<div class="bg-gradient-to-br from-brand-50 to-brand-100 border-2 border-brand-200 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-sm overflow-hidden">
@@ -146,7 +146,7 @@
 				<!-- Our Values -->
 				<section class="mb-8 sm:mb-10">
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6">
 						<div class="bg-brand-50 border border-brand-200 rounded-lg p-4 sm:p-6">
 							<h3 class="text-lg font-semibold text-brand-800 mb-2">Accuracy</h3>
 							<p class="text-gray-700">
@@ -441,14 +441,14 @@
 							<p class="text-gray-700 leading-relaxed mb-4">
 								You can also find Inna Tarasyan's work on the following websites:
 							</p>
-							<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-								<a href="https://armmagazine.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://armmagazine.shop/</a>
-								<a href="https://cryptotrading.website/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://cryptotrading.website/</a>
-								<a href="https://hurgada.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://hurgada.site/</a>
-								<a href="https://popularmagazines.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://popularmagazines.shop/</a>
-								<a href="https://primedoctors.store/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://primedoctors.store/</a>
-								<a href="https://rusarticles.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://rusarticles.shop/</a>
-								<a href="https://wikchenlun.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold">https://wikchenlun.site/</a>
+							<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+								<a href="https://armmagazine.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://armmagazine.shop/</a>
+								<a href="https://cryptotrading.website/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://cryptotrading.website/</a>
+								<a href="https://hurgada.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://hurgada.site/</a>
+								<a href="https://popularmagazines.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://popularmagazines.shop/</a>
+								<a href="https://primedoctors.store/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://primedoctors.store/</a>
+								<a href="https://rusarticles.shop/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://rusarticles.shop/</a>
+								<a href="https://wikchenlun.site/" target="_blank" rel="noopener noreferrer" class="text-brand-700 hover:text-brand-800 hover:underline font-semibold break-words">https://wikchenlun.site/</a>
 							</div>
 						</div>
 					</div>
@@ -457,5 +457,83 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	/* Make prose wider on desktop for about page */
+	.about-prose {
+		max-width: 100%;
+	}
+	
+	/* Override global prose max-width restriction on desktop */
+	@media (min-width: 1024px) {
+		.about-prose {
+			max-width: 100% !important;
+		}
+		
+		.about-prose p,
+		.about-prose ul,
+		.about-prose ol,
+		.about-prose li,
+		.about-prose h2,
+		.about-prose h3 {
+			max-width: 100%;
+		}
+	}
+	
+	/* Large desktop: Even wider for better readability */
+	@media (min-width: 1280px) {
+		.about-prose {
+			max-width: 100% !important;
+		}
+	}
+	
+	/* Improve spacing and readability */
+	.about-prose section {
+		margin-bottom: 2rem;
+	}
+	
+	@media (min-width: 640px) {
+		.about-prose section {
+			margin-bottom: 2.5rem;
+		}
+	}
+	
+	@media (min-width: 1024px) {
+		.about-prose section {
+			margin-bottom: 3rem;
+		}
+		
+		/* Better line height for readability on desktop */
+		.about-prose p {
+			line-height: 1.75;
+		}
+	}
+	
+	/* Better responsive images */
+	.about-prose img {
+		max-width: 100%;
+		height: auto;
+	}
+	
+	/* Improve form responsiveness */
+	@media (min-width: 1024px) {
+		#contact-form-container {
+			max-width: 100%;
+		}
+	}
+	
+	/* Better spacing for featured section on desktop */
+	@media (min-width: 1024px) {
+		.about-prose .bg-gradient-to-br {
+			padding: 2.5rem;
+		}
+	}
+	
+	@media (min-width: 1280px) {
+		.about-prose .bg-gradient-to-br {
+			padding: 3rem;
+		}
+	}
+</style>
 @endsection
 

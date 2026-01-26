@@ -5544,7 +5544,7 @@ nav[role="navigation"] .relative.inline-flex.items-center.px-2.py-2 {
 @media (min-width: 1024px) {
 	/* Better reading width for content */
 	.prose {
-		max-width: 65ch;
+		max-width: 95ch;
 	}
 	
 	/* Enhanced hover effects */

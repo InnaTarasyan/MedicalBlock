@@ -146,7 +146,7 @@
 								src="{!! $relatedPost->valid_image_url !!}" 
 								alt="{{ $relatedPost->title }}"
 								class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-								loading="lazy"
+
 							>
 							</a>
 						@else
