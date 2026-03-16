@@ -1,0 +1,20 @@
+.git
+.idea
+.vscode
+node_modules
+vendor
+
+# local env / secrets
+.env
+
+# logs / caches
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+
+# test artifacts
+coverage
+.phpunit.result.cache
+
+
