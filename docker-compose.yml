@@ -1,0 +1,55 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: medicalblock-php
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: medicalblock-nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: medicalblock-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: medicalblock
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3305:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql   # ✅ THIS LINE
+    networks:
+      - app-network
+
+  phpmyadmin:
+     image: phpmyadmin/phpmyadmin
+     container_name: medicalblock_phpmyadmin
+     ports:
+       - "9090:80"
+     environment:
+       PMA_HOST: mysql
+     depends_on:
+       - mysql
+     networks:
+       - app-network
+
+networks:
+  app-network:
+
+volumes:
+ mysql-data:
