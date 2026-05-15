@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 
 class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $query = BlogPost::with('doctor')
-            ->whereNotNull('published_at')
-            ->where('published_at', '<=', now());
+        $this->authorize('viewAny', BlogPost::class);
+
+        $query = BlogPost::with('doctor')->published();
 
         // Filter by topic if provided
         if ($request->has('topic') && $request->topic) {
@@ -23,13 +23,13 @@ class BlogController extends Controller
         // Search query filter
         if ($request->has('q') && $request->q) {
             $searchTerm = trim($request->q);
-            if (!empty($searchTerm)) {
+            if (! empty($searchTerm)) {
                 $query->where(function ($q) use ($searchTerm) {
-                    $q->where('title', 'like', '%' . $searchTerm . '%')
+                    $q->where('title', 'like', '%'.$searchTerm.'%')
 //                        ->orWhere('excerpt', 'like', '%' . $searchTerm . '%')
 //                        ->orWhere('content', 'like', '%' . $searchTerm . '%')
 //                        ->orWhere('author', 'like', '%' . $searchTerm . '%')
-                        ->orWhere('topic', 'like', '%' . $searchTerm . '%');
+                        ->orWhere('topic', 'like', '%'.$searchTerm.'%');
                 });
             }
         }
@@ -39,8 +39,7 @@ class BlogController extends Controller
             ->withQueryString(); // Preserve query parameters in pagination links
 
         // Get only first 5 unique topics for the filter
-        $topics = BlogPost::whereNotNull('published_at')
-            ->where('published_at', '<=', now())
+        $topics = BlogPost::published()
             ->whereNotNull('topic')
             ->distinct()
             ->orderBy('topic')
@@ -53,12 +52,9 @@ class BlogController extends Controller
         // Get statistics for hero section (only when not filtering)
         $totalArticles = null;
         $totalTopics = null;
-        if (!$request->has('topic') && !$request->has('q')) {
-            $totalArticles = BlogPost::whereNotNull('published_at')
-                ->where('published_at', '<=', now())
-                ->count();
-            $totalTopics = BlogPost::whereNotNull('published_at')
-                ->where('published_at', '<=', now())
+        if (! $request->has('topic') && ! $request->has('q')) {
+            $totalArticles = BlogPost::published()->count();
+            $totalTopics = BlogPost::published()
                 ->whereNotNull('topic')
                 ->distinct()
                 ->count('topic');
@@ -68,7 +64,7 @@ class BlogController extends Controller
         if ($request->wantsJson() || $request->ajax()) {
             try {
                 $html = view('blog._articles', compact('posts', 'searchTerm'))->render();
-                
+
                 // Build URL with query parameters (filter out empty values)
                 $url = url()->current();
                 $queryParams = [];
@@ -81,8 +77,8 @@ class BlogController extends Controller
                 if ($request->has('page') && $request->page > 1) {
                     $queryParams['page'] = $request->page;
                 }
-                if (!empty($queryParams)) {
-                    $url .= '?' . http_build_query($queryParams);
+                if (! empty($queryParams)) {
+                    $url .= '?'.http_build_query($queryParams);
                 }
 
                 return response()->json([
@@ -90,7 +86,8 @@ class BlogController extends Controller
                     'url' => $url,
                 ]);
             } catch (\Exception $e) {
-                \Log::error('Blog search error: ' . $e->getMessage());
+                \Log::error('Blog search error: '.$e->getMessage());
+
                 return response()->json([
                     'html' => '<div class="text-center py-8"><p class="text-red-600">An error occurred while searching. Please try again.</p></div>',
                     'url' => url()->current(),
@@ -106,9 +103,10 @@ class BlogController extends Controller
      */
     public function topics()
     {
+        $this->authorize('viewAny', BlogPost::class);
+
         // Get all unique topics with post counts
-        $topics = BlogPost::whereNotNull('published_at')
-            ->where('published_at', '<=', now())
+        $topics = BlogPost::published()
             ->whereNotNull('topic')
             ->select('topic')
             ->selectRaw('COUNT(*) as post_count')
@@ -121,7 +119,7 @@ class BlogController extends Controller
 
     public function show(BlogPost $post)
     {
-        if (!$post->published_at || $post->published_at->isFuture()) {
+        if (Gate::denies('view', $post)) {
             abort(404);
         }
 
@@ -136,6 +134,8 @@ class BlogController extends Controller
      */
     public function author(Doctor $doctor)
     {
+        $this->authorize('view', $doctor);
+
         $posts = $doctor->blogPosts()
             ->orderBy('published_at', 'desc')
             ->paginate(12);
